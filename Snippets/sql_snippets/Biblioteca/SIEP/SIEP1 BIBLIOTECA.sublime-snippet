@@ -1,0 +1,88 @@
+<snippet>
+	<content><![CDATA[
+select
+DM_DESBORDE,
+DM_IC_SECTOR_CNBV,
+DM_NUM_MES_ANIO,
+DM_ANIO,
+DM_USO,
+DM_PROMEDIO,
+DM_DESVIACION_ESTANDAR
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_IC_SECTOR_CNBV IN (1,2,5,6,8) AND DM_NUM_MES_ANIO = 6
+order by  DM_USO DESC
+
+select
+DM_DESBORDE,
+DM_NUM_MES_ANIO,
+DM_ANIO,
+DM_IC_SECTOR_CNBV
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_IC_SECTOR_CNBV IN (3,4) AND DM_NUM_MES_ANIO = 6
+
+
+select
+DM_DESBORDE,
+DM_NUM_MES_ANIO,
+DM_ANIO,
+DM_IC_SECTOR_CNBV,
+(case when DM_IC_SECTOR_CNBV in (1,2,5,6,8) then 1 else 1  end)
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_IC_SECTOR_CNBV IN (1,2,5,6,8) AND DM_NUM_MES_ANIO = 6
+
+
+select
+DM_ANIO,
+DM_NUM_MES_ANIO,
+DM_NOMBRE_COMERCIAL,
+DM_DESBORDE,
+DM_IC_SECTOR_CNBV,
+(case
+when DM_IC_SECTOR_CNBV in (1,2,3,4,5,6,8) then 1 else 1  end
+) as contador
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013
+
+
+
+
+
+select
+DM_ANIO,
+DM_NUM_MES_ANIO,
+DM_NOMBRE_COMERCIAL,
+DM_DESBORDE,
+DM_IC_SECTOR_CNBV,
+(case
+when DM_IC_SECTOR_CNBV in (1,2,5,6,8) then 1 else 1  end
+) as CONTADOR
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_IC_SECTOR_CNBV in (1,2,5,6,8)
+
+
+
+
+select
+DM_ANIO,
+DM_NUM_MES_ANIO,
+DM_NOMBRE_COMERCIAL,
+DM_DESBORDE,
+DM_IC_SECTOR_CNBV,
+(case
+when DM_IC_SECTOR_CNBV in (3,4) then 1 else 1  end
+) as CONTADOR
+from DM_PERFIL_CADENAS
+where
+DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_IC_SECTOR_CNBV in(3,4)
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SIEP case in</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

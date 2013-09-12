@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+INSERT INTO DM_CAT_TIPO_FONDO
+(
+ID_CATALOGO_TIPO_FONDO,
+DESCRIPCION
+)
+SELECT
+ID_NUMBER,
+FONDO
+FROM(
+SELECT
+ROWNUM AS ID_NUMBER,
+CASE WHEN FONDO IS NULL THEN 'SIN TIPO FONDO' ELSE FONDO END FONDO
+FROM(
+SELECT
+    FONDO
+FROM
+    STAGE_OBRAS
+GROUP BY
+    FONDO
+)A
+)B
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SIEP INSERT TIPO_FONDO</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

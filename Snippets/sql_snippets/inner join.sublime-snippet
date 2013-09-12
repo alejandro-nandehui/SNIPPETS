@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+inner join ${1:nom_tabla} ${2:b}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>inner join</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

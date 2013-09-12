@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+case ${1:nom_tabla} when ${2:condicional} then ${3:sentencia} else ${4:senten_fin} as ${5:alias}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>case</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

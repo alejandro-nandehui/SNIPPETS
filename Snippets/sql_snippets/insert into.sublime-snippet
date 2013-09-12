@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+insert into ${1:nom_tabla}(
+	${2:nom_col},
+	${3:nom_col})
+select
+	${5:nom_col},
+	${6:nom_col}
+from
+${7:nom_tabla2}
+where
+${8:nom_col} ${9:=} ${10:dato}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>insert into</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

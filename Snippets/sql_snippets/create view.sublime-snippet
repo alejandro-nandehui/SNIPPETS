@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+create view ${1:nom_vista}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>create view</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

@@ -1,0 +1,100 @@
+<snippet>
+	<content><![CDATA[
+select DISTINCT dm_num_mes_anio, dm_anio, dm_ic_pyme, dm_desborde from dm_perfil_cadenas
+
+update dm_perfil_cadenas
+set dm_desborde = 1
+where dm_ic_pyme >= 28000
+
+
+select count(dm_desborde) from dm_perfil_cadenas
+where dm_desborde =1
+
+
+select dm_ic_pyme from  dm_perfil_cadenas
+where dm_ic_pyme <= 28000
+order by dm_ic_pyme desc
+
+
+
+CREATE VIEW FOCUS.VM_PERSONAS_PRECIOS_VW
+AS
+    select
+            dmord_it.ORDER_ITEM_ID,
+            dmord_it.ORDER_ID,
+            dmord.CUSTOMER_ID,
+            demcost.CUST_FIRST_NAME,
+            demcost.CUST_LAST_NAME,
+            dmord_it.UNIT_PRICE
+    from
+            FOCUS.DEMO_ORDER_ITEMS dmord_it  inner join FOCUS.DEMO_ORDERS dmord
+                   on dmord_it.ORDER_ID = dmord.ORDER_ID
+                        inner join FOCUS.DEMO_CUSTOMERS demcost
+                   on demcost.CUSTOMER_ID = dmord.CUSTOMER_ID
+                   order by dmord_it.ORDER_ITEM_ID
+
+
+
+
+
+
+select DM_NOMBRE_COMERCIAL, dm_uso from DM_PERFIL_CADENAS
+where
+DM_NOMBRE_COMERCIAL = 'BLANCOS Y CONFECCIONES DE DURANGO, SA DE CV'
+
+select
+        dm_desborde,
+        count(dm_desborde)
+from
+        dm_perfil_cadenas
+        where dm_ic_pyme >= 22000 AND dm_ic_pyme <= 29000 AND DM_IC_SECTOR_CNBV in (1,2,5,6,8)
+        OR
+        dm_ic_pyme >= 19500 AND dm_ic_pyme <= 20000 AND DM_IC_SECTOR_CNBV in (3,4)
+        group by dm_desborde
+
+
+ select
+         dm_anio,
+         dm_num_mes_anio,
+         dm_desborde,
+         count(dm_desborde)
+    from
+         dm_perfil_cadenas
+    where
+         DM_IC_SECTOR_CNBV in (3,4)
+    group by
+         dm_anio,
+         dm_num_mes_anio,
+         dm_desborde
+
+
+select
+        DM_NOMBRE_COMERCIAL,
+        DM_PROMEDIO,
+        DM_DESVIACION_ESTANDAR,
+        DM_USO,
+        DM_MONTO_OPERADO,
+        DM_LIMITE_SUPERIOR
+from
+        DM_PERFIL_CADENAS
+        WHERE DM_IC_SECTOR_CNBV IN (1,2,5,6,8) AND DM_DESBORDE = 1 AND DM_ANIO = 2013 AND DM_NUM_MES_ANIO  = 1
+        --GROUP BY DM_ANIO, DM_NUM_MES_ANIO
+
+         update dm_perfil_cadenas
+set dm_desborde = 1
+--where dm_ic_pyme >= 22000 AND dm_ic_pyme <= 29000 AND DM_IC_SECTOR_CNBV in (1,2,5,6,8)
+where dm_ic_pyme >= 15500 AND dm_ic_pyme <= 20000 AND DM_IC_SECTOR_CNBV in (3,4)
+
+
+update dm_perfil_cadenas
+set DM_USO = DM_DESVIACION_ESTANDAR * 0.05
+--where dm_ic_pyme >= 22000 AND dm_ic_pyme <= 29000 AND DM_IC_SECTOR_CNBV in (1,2,5,6,8)
+--where dm_ic_pyme >= 19500 AND dm_ic_pyme <= 20000 AND DM_IC_SECTOR_CNBV in (3,4)
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SIEP DESBORDE</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>

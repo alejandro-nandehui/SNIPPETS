@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+	SELECT
+		DM_CAT_CLIENTE_ID,
+		SUM(SI) as SI,
+		SUM(NO) as NO
+	FROM
+	(
+		SELECT
+			A.DM_CAT_CLIENTE_ID,
+			B.DM_PREGUNTA_ID,
+			B.DM_PERSONA_ENC_ID,
+			CASE DM_RESPUESTA_POS_ID WHEN 1 THEN 1 ELSE 0 END as SI,
+			CASE DM_RESPUESTA_POS_ID WHEN 2 THEN 1 ELSE 0 END as NO
+		FROM
+			DM_CAT_CLIENTE A INNER JOIN DM_FACT_PERSONA_RESPUESTA  B
+						ON A.DM_CAT_CLIENTE_ID = B.DM_CAT_CLIENTE_ID
+							INNER JOIN DM_CAT_PREGUNTA  C
+						ON A.DM_CAT_CLIENTE_ID = C.DM_CAT_CLIENTE_ID
+							AND B.DM_PREGUNTA_ID = C.DM_PREGUNTA_ID
+							AND B.DM_RESPUESTA_ID = C.DM_RESPUESTA_ID
+			WHERE B.DM_RESPUESTA_ID = 6
+	) REGISTROS
+	GROUP BY
+		DM_CAT_CLIENTE_ID
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>CONTADOR</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.sql</scope>
+</snippet>
